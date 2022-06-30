@@ -1,0 +1,26 @@
+stages:
+  - build
+
+build:
+  stage: build
+  image: docker:latest
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
+    DOCKER_HOST: tcp://docker:2375/
+  services:
+    - docker:dind
+  #   artifacts:
+  #     paths:
+  #       - bin/
+  script:
+    - docker build -t backend:latest .
+    - docker run --rm -i --entrypoint "" backend:latest ./vendor/bin/php-cs-fixer fix --dry-run --diff
+    - docker run --rm -i --entrypoint "" backend:latest ./vendor/bin/phpstan analyse
+    - docker run --rm -i --entrypoint "" backend:latest ./vendor/bin/phpunit
+
+#     - echo As a helper here you have a sample of how to build and push a \
+#     docker image to the provided gitlab registry.
+#     - echo ${CI_JOB_TOKEN} | docker login --password-stdin -u ${CI_REGISTRY_USER} ${CI_REGISTRY}
+#     - docker build . -t ${CI_REGISTRY_IMAGE}:latest
+#     - docker push ${CI_REGISTRY_IMAGE}:latest
