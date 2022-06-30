@@ -31,7 +31,7 @@ app-test: ### Execute tests
 
 .PHONY: composer-install
 composer-install: ### Composer install
-	@docker-compose exec backend composer install
+	@docker-compose exec -T backend composer install
 
 .PHONY: symfony-setup
 symfony-setup: ### Configure environment

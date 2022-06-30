@@ -16,7 +16,7 @@ RUN install-php-extensions apcu opcache
 COPY ./ /app
 WORKDIR /app
 
-#RUN composer install && \
-#    chmod +x bin/*
-#
-#ENTRYPOINT php -d memory_limit=1280M -d upload_max_filesize=1024M -d post_max_size=1024 public/index.php
+RUN composer install && \
+    chmod +x bin/*
+
+ENTRYPOINT php public/index.php
