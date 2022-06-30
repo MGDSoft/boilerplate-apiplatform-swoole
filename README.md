@@ -33,14 +33,14 @@ All related with swoole is in config/swoole/swoole.php like other runtimes of sy
 
 The performance of Swoole is AMAZING to get responses between 5-15ms.
 
-There are some troubles with using "hot reload" with swoole and symfony and I prefere use a normal php server. If you look
-`docker-compose.yml` you will see the entrypoint is overridden.
+There are some troubles with using "hot reload" with swoole and symfony and I prefere use a normal php server for dev development.
+If you look `docker-compose.yml` you will see the entrypoint is overridden.
 
 ### Api Platform
 
-It works as always with some util things like if you want to create a custom controller you can use some utils things
-like serializer and validation. You can check `src/User/Infrastructure/Controller/CustomPostUserController.php` and there
-you will see requestProcessor->process. It can extract input data and send it within a bus.
+It works as always with some utils things, for example if you want to create a custom controller you can use 
+serializer or validation like ApiPlatform do. You can check `src/User/Infrastructure/Controller/CustomPostUserController.php` and there
+you will see requestProcessor->process. It can extract input data and send it within a messenger bus.
 
 ### Folder structure
 
@@ -51,17 +51,18 @@ lot of time building a site. I don't want to create a lot of layers that create 
 As you can see, all related to the user is inside his folder even Tests. I think it’s really handy and all your code is 
 near to modify.
 
-All Interfaces are auto declared as service referring to `Infrastructure/Doctrine/Repository/UserRepositoryDoctrine.php`.
-It's configured in `config/services/services_repositories.php`
+All Interfaces are auto declared as service referring to his correct service 
+`Infrastructure/Doctrine/Repository/UserRepositoryDoctrine.php`. It's configured in `config/services/services_repositories.php`
 
-All doctrine custom repositories extend of ServiceEntityRepository, you only must write new functionality.
+All doctrine custom repositories extend of `ServiceEntityRepository`, you only should focus in write new functionality related to your business.
 
 ### Make files
 
 All commands are very descriptive but you can check it in Makefile.
 
 ```sh
-make
+# To see all commands 
+make help
 ```
 
 ### Git Pre-commit
@@ -109,4 +110,7 @@ only the important things.
 - Create a command to create skeleton of new section
 - Hot reload for Swoole dev mode 
 
-Every pull request is welcome.
+The purpose of this repo is to create a seed to work fast with this stack, if you know some better way to improve speed 
+or quality of it I’d love to hear from you.
+
+by the way `php8` and `swoole` are amazing ❤️. 
