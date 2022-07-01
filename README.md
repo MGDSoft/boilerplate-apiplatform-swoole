@@ -1,5 +1,4 @@
-## Boilerplate Symfony + hexagonal architecture (mix) + fast development + swoole 🚀
-
+## Boilerplate ApiPlatform + hexagonal architecture (mix) + rapid development + swoole 🚀
 
 ![Symfony Sersion](https://img.shields.io/badge/Symfony-6.1-purple.svg?style=flat-square&logo=symfony)
 ![php Version](https://img.shields.io/badge/php-8.1-blueviolet)
