@@ -15,7 +15,7 @@ if [ $(git diff --cached --name-only --diff-filter=ACMRTUXB | grep -q '\.php$') 
 
     if [ "$1" = "check" ]; then
       STAGED_FILES=''
-      PHP_CS_FIXER_CMD=" echo 'PHP-CS-FIXER ignored' "
+      PHP_CS_FIXER_CMD="$PHP_CS_FIXER_CMD fix --dry-run --diff "
     else
       STAGED_FILES=" -- $(git diff --cached --name-only --diff-filter=ACMRTUXB | grep '\.php$' | sed 's/app\///' | sed ':a;N;$!ba;s/\n/ /g' )";
     fi
