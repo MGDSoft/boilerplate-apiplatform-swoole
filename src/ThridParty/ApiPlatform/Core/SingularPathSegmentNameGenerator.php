@@ -8,7 +8,7 @@ use ApiPlatform\Core\Operation\PathSegmentNameGeneratorInterface;
 
 final class SingularPathSegmentNameGenerator implements PathSegmentNameGeneratorInterface
 {
-    public function getSegmentName(string $name, bool $collection=true): string
+    public function getSegmentName(string $name, bool $collection = true): string
     {
         return $this->dashize($name);
     }

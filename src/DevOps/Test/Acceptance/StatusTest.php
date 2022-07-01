@@ -8,7 +8,7 @@ class StatusTest extends WebTestCase
 {
     public function testSomething(): void
     {
-        $client=static::createClient();
+        $client = static::createClient();
         $client->request('GET', '/status');
 
         $this->assertResponseIsSuccessful();

@@ -32,7 +32,6 @@ class RequestProcessor
         ?string $busDispatchWithClass = null,
         ?array $validatorOpts = ['groups' => ['Default']],
     ): mixed {
-
         try {
             $request = $this->requestStack->getCurrentRequest();
 
@@ -50,7 +49,6 @@ class RequestProcessor
                 $format,
                 [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true]
             );
-
         } catch (\Throwable $e) {
             throw new InvalidArgumentException('Syntax error trying to extract data from request', 0, $e);
         }

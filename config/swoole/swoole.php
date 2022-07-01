@@ -1,7 +1,6 @@
 <?php
 
 if (!isset($_ENV['DISABLE_DEFAULT_SERVER']) && class_exists('\Swoole\Constant')) {
-
     $_ENV['APP_RUNTIME'] = Runtime\Swoole\Runtime::class;
     $_SERVER['APP_RUNTIME_OPTIONS'] = [
         'host'     => '0.0.0.0',

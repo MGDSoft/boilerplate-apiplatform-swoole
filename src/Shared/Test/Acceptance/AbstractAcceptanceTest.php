@@ -4,7 +4,6 @@ namespace App\Shared\Test\Acceptance;
 
 use Coduo\PHPMatcher\PHPUnit\PHPMatcherAssertions;
 use Hautelook\AliceBundle\PhpUnit\RecreateDatabaseTrait;
-use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 abstract class AbstractAcceptanceTest extends WebTestCase
@@ -17,7 +16,7 @@ abstract class AbstractAcceptanceTest extends WebTestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->client=self::createClient();
+        $this->client = self::createClient();
     }
 
     /**
@@ -25,7 +24,7 @@ abstract class AbstractAcceptanceTest extends WebTestCase
      */
     protected function getClientResponseContentArray(): ?array
     {
-        $content=$this->client->getResponse()->getContent();
+        $content = $this->client->getResponse()->getContent();
 
         if (!$content) {
             throw new \RuntimeException('Invalid content');
@@ -40,7 +39,7 @@ abstract class AbstractAcceptanceTest extends WebTestCase
             return;
         }
 
-        $assertFn=fn ($pattern) => $this->assertMatchesPatternPrintPrettyError((string) $pattern);
+        $assertFn = fn ($pattern) => $this->assertMatchesPatternPrintPrettyError((string) $pattern);
 
         if (is_array($checkPatternResponse) || $checkPatternResponse instanceof \iterator) {
             array_walk($checkPatternResponse, $assertFn);
@@ -51,7 +50,7 @@ abstract class AbstractAcceptanceTest extends WebTestCase
         $assertFn($checkPatternResponse);
     }
 
-    private function assertMatchesPatternPrintPrettyError(mixed $pattern) : void
+    private function assertMatchesPatternPrintPrettyError(mixed $pattern): void
     {
         $data = $this->client->getResponse()->getContent();
 

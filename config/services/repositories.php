@@ -17,11 +17,11 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     foreach ($data as $file) {
         $matches = [];
         preg_match('/\/src\/(.*?)RepositoryInterface\.php/', $file, $matches);
-        $nameSpace= $matches[1];
-        $nameSpace = 'App\\' . str_replace('/', '\\', $nameSpace);
+        $nameSpace = $matches[1];
+        $nameSpace = 'App\\'.str_replace('/', '\\', $nameSpace);
 
-        $interfaceService = $nameSpace . 'RepositoryInterface';
-        $doctrineService = str_replace('Domain\\', 'Infrastructure\\Doctrine\\', $nameSpace). 'RepositoryDoctrine';
+        $interfaceService = $nameSpace.'RepositoryInterface';
+        $doctrineService = str_replace('Domain\\', 'Infrastructure\\Doctrine\\', $nameSpace).'RepositoryDoctrine';
 
         if (!interface_exists($interfaceService)) {
             throw new CompileError("Interface not exist '$doctrineService'");

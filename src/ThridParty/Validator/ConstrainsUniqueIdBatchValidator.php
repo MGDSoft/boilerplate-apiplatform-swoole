@@ -13,7 +13,7 @@ use Symfony\Component\Validator\ConstraintValidator;
 class ConstrainsUniqueIdBatchValidator extends ConstraintValidator implements EventSubscriberInterface
 {
     /** @var int[] */
-    protected array $store=[];
+    protected array $store = [];
 
     public function validate(mixed $value, Constraint $constraint): void
     {
@@ -34,7 +34,7 @@ class ConstrainsUniqueIdBatchValidator extends ConstraintValidator implements Ev
             return;
         }
 
-        $this->store[$value]=$value;
+        $this->store[$value] = $value;
     }
 
     public static function getSubscribedEvents(): array
@@ -49,6 +49,6 @@ class ConstrainsUniqueIdBatchValidator extends ConstraintValidator implements Ev
      */
     public function onKernelRequest(): void
     {
-        $this->store=[];
+        $this->store = [];
     }
 }

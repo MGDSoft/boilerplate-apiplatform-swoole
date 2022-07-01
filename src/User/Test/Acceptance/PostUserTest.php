@@ -13,18 +13,18 @@ class PostUserTest extends AbstractAcceptanceTest
     /**
      * @dataProvider providerBasicFlow
      */
-    public function testBasicFlow(string $data, int $statusResponse, mixed $textPatternResponse=null, int $numInserted=0): void
+    public function testBasicFlow(string $data, int $statusResponse, mixed $textPatternResponse = null, int $numInserted = 0): void
     {
         $this->client->request('PUT', '/user-custom', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'HTTP_ACCEPT' => 'application/json',
+            'HTTP_ACCEPT'  => 'application/json',
         ], $data);
 
         $this->assertResponseMatchesPatternContent($textPatternResponse);
         $this->assertResponseStatusCodeSame($statusResponse);
 
         /** @var UserRepositoryInterface $repository */
-        $repository=$this->get(UserRepositoryInterface::class);
+        $repository = $this->get(UserRepositoryInterface::class);
         $this->assertEquals($repository->count([]), $numInserted);
     }
 
@@ -33,16 +33,16 @@ class PostUserTest extends AbstractAcceptanceTest
      */
     public function providerBasicFlow(): array
     {
-        $dataOK=[[
-            'name' => "one asdasdasd asd asd",
+        $dataOK = [[
+            'name' => 'one asdasdasd asd asd',
         ], [
-            'name' => "two asdasdasd asd asd",
+            'name' => 'two asdasdasd asd asd',
         ]];
 
-        $dataFailInvalidType=$dataOK;
-        $dataFailInvalidType[1]['name']=300;
+        $dataFailInvalidType = $dataOK;
+        $dataFailInvalidType[1]['name'] = 300;
 
-        $invalidJson=json_encode($dataFailInvalidType).'wrong';
+        $invalidJson = json_encode($dataFailInvalidType).'wrong';
 
         return [
             'ok'                => [json_encode($dataOK), 200, '[{"name": "one asdasdasd asd asd", "@*@": "@*@"},{"name": "two asdasdasd asd asd", "@*@": "@*@"}]', 2],

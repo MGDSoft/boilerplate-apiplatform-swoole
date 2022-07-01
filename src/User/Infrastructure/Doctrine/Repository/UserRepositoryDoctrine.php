@@ -9,6 +9,6 @@ use App\User\Domain\Model\User;
 use App\User\Domain\Repository\UserRepositoryInterface;
 
 final class UserRepositoryDoctrine extends AbstractRepositoryDoctrine implements UserRepositoryInterface
- {
-     protected const ENTITY_CLASS = User::class;
- }
+{
+    protected const ENTITY_CLASS = User::class;
+}
