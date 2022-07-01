@@ -36,7 +36,7 @@ composer-install: ### Composer install
 .PHONY: symfony-setup
 symfony-setup: ### Configure environment
 	@docker-compose exec -T backend php bin/console doc:sc:up --force
-	@docker-compose exec -T backend php bin/console bin/console doc:sc:vali
+	@docker-compose exec -T backend php bin/console doc:sc:vali
 
 .PHONY: docker-build-no-cache
 docker-build-no-cache: ### Docker build no--cache
