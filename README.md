@@ -1,4 +1,4 @@
-## Boilerplate ApiPlatform + hexagonal architecture (mix) + rapid development + swoole 🚀
+# ApiPlatform + hexagonal (mix) + fast dev + Swoole 🚀
 
 ![Symfony Sersion](https://img.shields.io/badge/Symfony-6.1-purple.svg?style=flat-square&logo=symfony)
 ![php Version](https://img.shields.io/badge/php-8.1-blueviolet)
@@ -6,7 +6,7 @@
 ![Test](https://github.com/MGDSoft/boilerplate-apiplatform-swoole/workflows/CI/badge.svg?branch=master)
 
 
-First of all, this repo is experimental and doesn't have enough time to use in a production environment 
+First of all, this repo is experimental boilerplate and doesn't have enough time to use in a production environment 
 (especially related to swoole). But as you can see all configuration related with swoole is in config/swoole/swoole.php. 
 This project uses the symfony runtime runtime/swoole package.
 
