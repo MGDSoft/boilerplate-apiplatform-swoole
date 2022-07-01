@@ -1,4 +1,4 @@
-## Boilerplate php 8.1 / symfony / fast development / hexagonal architecture (mix) and swoole 🚀
+## Boilerplate Symfony + hexagonal architecture (mix) + fast development + swoole 🚀
 
 
 ![Symfony Sersion](https://img.shields.io/badge/Symfony-6.1-purple.svg?style=flat-square&logo=symfony)
